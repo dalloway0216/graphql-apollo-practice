@@ -8,6 +8,7 @@ type User = {
   gender: string;
   age: number;
   address: string;
+  phone: string;
 };
 
 const users: User[] = [
@@ -18,6 +19,7 @@ const users: User[] = [
     gender: 'male',
     age: 25,
     address: 'Tokyo',
+    phone: '090-1111-2222',
   },
   {
     id: '2',
@@ -26,6 +28,7 @@ const users: User[] = [
     gender: 'female',
     age: 23,
     address: 'Osaka',
+    phone: '090-3333-4444',
   },
 ];
 
@@ -37,6 +40,7 @@ const typeDefs = `#graphql
     gender: String!
     age: Int!
     address: String!
+    phone: String!
   }
 
   type Query {
@@ -45,7 +49,7 @@ const typeDefs = `#graphql
   }
 
   type Mutation {
-  addUser(name: String!, email: String!, gender: String!, age: Int!, address: String!): User!
+  addUser(name: String!, email: String!, gender: String!, age: Int!, address: String!, phone: String!): User!
 }
 `;
 
@@ -70,6 +74,7 @@ const resolvers = {
     gender: args.gender,
     age: args.age,
     address: args.address,
+    phone: args.phone,
   };
 
       users.push(newUser);

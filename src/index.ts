@@ -55,17 +55,17 @@ const typeDefs = `#graphql
 
 const resolvers = {
   Query: {
-    users: () => users,
+  users: () => users,
 
-    user: (_parent: unknown, args: { name: string; email: string; gender: string; age: number; address: string }) => {
-      return users.find((user) => user.id === args.id);
-    },
+  user: (_parent: unknown, args: { id: string }) => {
+    return users.find((user) => user.id === args.id);
   },
+},
 
   Mutation: {
    addUser: (
   _parent: unknown,
-  args: { name: string; email: string; gender: string }
+  args: { name: string; email: string; gender: string; age: number; address: string; phone: string }
 ) => {
   const newUser: User = {
     id: String(users.length + 1),
